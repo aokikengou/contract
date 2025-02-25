@@ -19,7 +19,7 @@ contract DepositLock is Ownable {
      * @param _depositAmount ユーザーが送金したい金額 (msg.value と一致させる)
      */
     function deposit(uint256 _depositAmount) external payable {
-        require(_depositAmount > 0, "DdepositAmount must be > 0");
+        require(_depositAmount > 0, "DepositAmount must be > 0");
         require(msg.value == _depositAmount, "Sent ETH does not match depositAmount");
 
         // Depositしている一覧(_depositors)に含まれていない場合、追加
@@ -64,7 +64,7 @@ contract DepositLock is Ownable {
      * @notice コントラクトが所持しているETH量を返却する関数
      * @return コントラクトが所持しているETH量(wei単位)
      */
-    function getContractBalnce() external view returns (uint) {
+    function getContractBalance() external view returns (uint) {
         return address(this).balance;
     }
 
@@ -73,7 +73,7 @@ contract DepositLock is Ownable {
      * @param _addr 残高を確認したいアドレス
      * @return コントラクトが所持しているUser毎のETH量(wei単位)
      */
-    function getUserBalnce(address _addr) external view returns (uint) {
+    function getUserBalance(address _addr) external view returns (uint) {
         return balances[_addr];
     }
 
